@@ -1,0 +1,112 @@
+@import "responsive";
+html {
+    font-size: 10px;
+   
+    @include large-1440 {
+        font-size: 9px;
+    }
+    @include large-1199 {
+        font-size: 8px;
+    }
+    @include small-767 {
+        font-size: 7px;
+    }
+    @include m-375 {
+        font-size: 6px;
+    }
+    @include m-325 {
+        font-size: 5px;
+    }
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Crimson Pro', serif;
+    font-family: 'Lexend', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+p,
+label,
+address {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        text-decoration: none !important;
+    }
+}
+
+button {
+    outline: none !important;
+    &:focus {
+        outline: none !important;
+    }
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400;500;700&display=swap');
+@import "variable";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "fonts";
+@import "margin-padding";
+@import "button";
+@import "input";
+// @import "pagination";
+// @import "tabs";
+@import "header";
+@import "sidenavbar.scss";
+@import "index";
+@import "footer";
+@import "sllider-arrow";
+@import "modal";
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1170px !important;
+    }
+}
+
+.pad-y {
+    padding-top: 9.4rem;
+    padding-bottom: 9.4rem;
+}
+
+.counter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16rem;
+    font-weight: 700;
+    color: $primary-p2;
+}
+
+
+.top-parent-ul-items {
+    display: flex;
+}
+
+.block-row-2nd{
+    margin-left: 10rem;
+    @include medium-768{
+        margin-left: 5rem;
+    }
+}

@@ -1,0 +1,102 @@
+.modal.modal-sign{
+    .modal-header{
+        padding: 0;
+        border: none;
+       
+    }
+    .modal-dialog{
+        max-width: 78rem;
+    }
+    .modal-content{
+        position: relative;
+        background: url(../images/modal.jpeg) no-repeat center;
+        background-size: cover;
+        height: 54.5rem;
+        border-radius: 5px;
+        overflow: hidden;
+        
+    }
+    .modal-header .close{
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        font-size: 3rem;
+        color: #fff;
+        opacity: 1;
+        cursor: pointer;
+        z-index: 9999;
+    }
+    .modal-body{
+        padding: 0;
+        border: none;
+        .left-modal-data{
+            width: 35rem;
+            position: absolute;
+            left: 6rem;
+            top: 5rem;        
+            .get{
+                font-weight: 700;
+                color: $heading;
+                font-size: 4.8rem;
+                margin-bottom: .5rem;
+            }
+            .Premium{
+                font-weight: 700;
+                color: $primary-p;
+                font-size: 4.8rem;
+                margin-bottom: .5rem;
+            }
+            .best-text{
+                font-weight: 700;
+                color: $heading;
+                font-size: 1.6rem;
+                margin-bottom: 1rem;
+            }
+            .form-email{
+                .email-input{
+                    width: 100%;
+                    height: 5rem;
+                    border: 1px solid rgb(96, 106, 114);
+                    border-radius: 5px;
+                    padding: 2px 1.6rem;
+                    font-size: 1.6rem;
+                    color: $heading;
+                    font-weight: 400;
+                    &:focus{
+                        outline: none;
+                    }
+                    &::placeholder{
+                        color: $text;
+                        font-size: 1.6rem;
+                        font-weight: 400;
+                    }
+                }
+                .sign-modal{
+                    width: 100%;
+                    height: 5rem;
+                    border-radius: 5px;
+                    padding: 1rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: $black;
+                    border: none;
+                    font-size: 1.6rem;
+                    color: $white;
+                    font-weight: 700;
+                    margin-top: 1rem;
+                    &:hover{
+                        background: $heading;
+                        transition: ease-in-out .4s;
+                    }
+                }
+            }
+        }
+    }
+    .modal-footer{
+        padding: 0;
+        border: none;
+    }
+}

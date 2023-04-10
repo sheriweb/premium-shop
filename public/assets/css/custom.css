@@ -1,0 +1,29 @@
+.set-button{
+    display: flex;
+    justify-content: space-between;
+}
+i.icofont-ui-delete.text-success {
+    color: #324da8 !important;
+}
+span.edit-category {
+    cursor: pointer;
+}
+.jsgrid .jsgrid-button {
+    width: 16px;
+    height: 16px;
+    border: none;
+    cursor: pointer;
+    background-image: url(../images/js-grid.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+.d-none{
+    display: none !important;
+}
+ .pixelstrap .sm-nowrap  li  a, .pixelstrap .sm-nowrap  li  :not(ul) a {
+        white-space: pre-wrap !important;
+
+    }
+.has-submenu {
+    white-space: pre-wrap !important;
+}

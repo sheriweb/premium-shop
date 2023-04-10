@@ -1,0 +1,479 @@
+.prev,.next{
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 50%;
+    background: $white;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    border: 1px solid $heading;
+    &:hover{
+        background: $primary-p;
+        border-color: $primary-p;
+        svg{
+            path{
+                fill: $white;
+            }
+        }
+    }
+}
+
+.next{
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    svg{
+        margin-left: 0px;
+        width: 2.4rem;
+        @include m-575{
+            width: 1rem;
+        }
+    }
+   
+
+}
+.prev{
+    top: 50%;
+    left: 1%;
+    transform: translateY(-50%);
+    svg{
+        transform: scaleX(-1);
+        margin-right: 4px;
+        width: 2.4rem;
+        @include m-575{
+            width: 1rem;
+        }
+      
+    }
+}
+
+
+
+
+.prev-for,.next-for{
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 50%;
+    background: $white;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    border: 1px solid $heading;
+    &:hover{
+        background: $primary-p;
+        border-color: $primary-p;
+        svg{
+            path{
+                fill: $white;
+            }
+        }
+    }
+}
+
+.next-for{
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    svg{
+        margin-left: 0px;
+        width: 2.4rem;
+        @include m-575{
+            width: 1rem;
+        }
+    }
+   
+
+}
+.prev-for{
+    top: 50%;
+    left: 1%;
+    transform: translateY(-50%);
+    svg{
+        transform: scaleX(-1);
+        margin-right: 4px;
+        width: 2.4rem;
+        @include m-575{
+            width: 1rem;
+        }
+      
+    }
+}
+
+
+
+
+.prev-extra,.next-extra{
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 50%;
+    background: $white;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    border: 1px solid $heading;
+    &:hover{
+        background: $primary-p;
+        border-color: $primary-p;
+        svg{
+            path{
+                fill: $white;
+            }
+        }
+    }
+}
+
+.next-extra{
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    svg{
+        margin-left: 0px;
+        width: 2.4rem;
+        @include m-575{
+            width: 1rem;
+        }
+    }
+   
+
+}
+.prev-extra{
+    top: 50%;
+    left: 1%;
+    transform: translateY(-50%);
+    svg{
+        transform: scaleX(-1);
+        margin-right: 4px;
+        width: 2.4rem;
+        @include m-575{
+            width: 1rem;
+        }
+      
+    }
+}
+
+
+
+.prev-today,.next-today{
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 50%;
+    background: $white;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    border: 1px solid $heading;
+    &:hover{
+        background: $primary-p;
+        border-color: $primary-p;
+        svg{
+            path{
+                fill: $white;
+            }
+        }
+    }
+}
+
+.next-today{
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    svg{
+        margin-left: 0px;
+        width: 2.4rem;
+        @include m-575{
+            width: 1rem;
+        }
+    }
+   
+
+}
+.prev-today{
+    top: 50%;
+    left: 1%;
+    transform: translateY(-50%);
+    svg{
+        transform: scaleX(-1);
+        margin-right: 4px;
+        width: 2.4rem;
+        @include m-575{
+            width: 1rem;
+        }
+      
+    }
+}
+
+
+
+.prev-extra-2,.next-extra-2{
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 50%;
+    background: $white;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    border: 1px solid $heading;
+    &:hover{
+        background: $primary-p;
+        border-color: $primary-p;
+        svg{
+            path{
+                fill: $white;
+            }
+        }
+    }
+}
+
+.next-extra-2{
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    svg{
+        margin-left: 0px;
+        width: 2.4rem;
+        @include m-575{
+            width: 1rem;
+        }
+    }
+   
+
+}
+.prev-extra-2{
+    top: 50%;
+    left: 1%;
+    transform: translateY(-50%);
+    svg{
+        transform: scaleX(-1);
+        margin-right: 4px;
+        width: 2.4rem;
+        @include m-575{
+            width: 1rem;
+        }
+      
+    }
+}
+
+
+.prev-f1,.next-f1{
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 50%;
+    background: $white;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    border: 1px solid $heading;
+    &:hover{
+        background: $primary-p;
+        border-color: $primary-p;
+        svg{
+            path{
+                fill: $white;
+            }
+        }
+    }
+}
+
+.next-f1{
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    svg{
+        margin-left: 0px;
+        width: 2.4rem;
+        @include m-575{
+            width: 1rem;
+        }
+    }
+   
+
+}
+.prev-f1{
+    top: 50%;
+    left: 1%;
+    transform: translateY(-50%);
+    svg{
+        transform: scaleX(-1);
+        margin-right: 4px;
+        width: 2.4rem;
+        @include m-575{
+            width: 1rem;
+        }
+      
+    }
+}
+
+
+.prev-f2,.next-f2{
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 50%;
+    background: $white;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    border: 1px solid $heading;
+    &:hover{
+        background: $primary-p;
+        border-color: $primary-p;
+        svg{
+            path{
+                fill: $white;
+            }
+        }
+    }
+}
+
+.next-f2{
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    svg{
+        margin-left: 0px;
+        width: 2.4rem;
+        @include m-575{
+            width: 1rem;
+        }
+    }
+   
+
+}
+.prev-f2{
+    top: 50%;
+    left: 0%;
+    transform: translateY(-50%);
+    svg{
+        transform: scaleX(-1);
+        margin-right: 4px;
+        width: 2.4rem;
+        @include m-575{
+            width: 1rem;
+        }
+      
+    }
+}
+
+
+.prev-1,.next-1{
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 50%;
+    background: $white;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    border: 1px solid $heading;
+    &:hover{
+        background: $primary-p;
+        border-color: $primary-p;
+        svg{
+            path{
+                fill: $white;
+            }
+        }
+    }
+}
+
+.next-1{
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    svg{
+        margin-left: 0px;
+        width: 2.4rem;
+        @include m-575{
+            width: 1rem;
+        }
+    }
+   
+
+}
+.prev-1{
+    top: 50%;
+    left: 1%;
+    transform: translateY(-50%);
+    svg{
+        transform: scaleX(-1);
+        margin-right: 4px;
+        width: 2.4rem;
+        @include m-575{
+            width: 1rem;
+        }
+      
+    }
+}
+
+
+
+.prev-mobile,.next-mobile{
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 50%;
+    background: $white;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    border: 1px solid $heading;
+    &:hover{
+        background: $primary-p;
+        border-color: $primary-p;
+        svg{
+            path{
+                fill: $white;
+            }
+        }
+    }
+}
+
+.next-mobile{
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    @include m-575{
+        right: 4%;
+    }
+    svg{
+        margin-left: 0px;
+        width: 2.4rem;
+        @include m-575{
+            width: 1rem;
+        }
+    }
+   
+
+}
+.prev-mobile{
+    top: 50%;
+    left: 2%;
+    transform: translateY(-50%);
+    @include m-425{
+        left: 4%;
+    }
+    svg{
+        transform: scaleX(-1);
+        margin-right: 4px;
+        width: 2.4rem;
+        @include m-575{
+            width: 1rem;
+        }
+      
+    }
+}

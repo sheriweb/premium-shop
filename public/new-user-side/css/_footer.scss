@@ -1,0 +1,297 @@
+.footer-main{
+    border-bottom: 2px solid $eee;
+    padding-bottom: 6rem;
+    background: $input-bg;
+}
+.footer-flex{
+    display: flex;
+    justify-content: space-between;
+    @include m-425{
+        flex-direction: column-reverse;
+    }
+}
+.footer-loft{
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    min-width: 40%;
+    .logo-footer{
+        margin-top: 6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 23.7rem;
+        height: 19px;
+    }
+    .learn-more{
+        margin-top: 1.5rem;
+        .learn-text{
+            font-size: 1.6rem;
+            color: $heading;
+            font-weight: 400;
+            .link-learn{
+                text-decoration: underline;
+                font-weight: 600;
+                color: $heading;
+                &:hover{
+                    color: $primary-p;
+                }
+            }
+        }
+    }
+}
+
+.footer-right{
+    display: flex;
+    @include m-425{
+        display: none;
+    }
+    .img-right-corner{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 35.2rem;
+        height: 14.4rem;
+    }
+   
+}
+.app-play-main{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include m-425{
+        justify-content: flex-start;
+    }
+    
+    .app-store{
+        width: 16.2rem;
+        height: 4.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 2rem;
+        @include m-425{
+            margin-left: 0;
+        }
+        &.mobile-left-margin{
+            @include m-425{
+                margin-left: 2rem;
+            }
+        }
+        a{
+            width: 100%;
+            &:hover{
+                opacity: 0.8;
+            }
+        }
+    }
+}
+.social-app{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4rem;
+    @include m-425{
+        flex-direction: column;
+        margin-top: 2rem;
+    }
+
+    .social-iocns{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0;
+        @include m-575{
+            justify-content: flex-start;
+        }
+        @include m-425{
+            margin-bottom: 3rem;
+        }
+        .social-li{
+            margin-right: 1.6rem;
+            &:last-child{
+                margin-right: 0rem;
+            }
+            .social-link{
+                width: 4.8rem;
+                height: 4.8rem;
+                border: 2px solid $black;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: ease-in-out .4s;
+                border-radius: 50%;
+                
+               
+                @include medium-768{
+                    width: 4rem;
+                    height: 4rem;
+                }
+                .fa{
+                    font-size: 2rem;
+                    color: $black;
+                }
+                .fab{
+                    font-size: 2rem;
+                    color: $black;
+                }
+                &:hover{
+                    background: $primary-p;
+                    border-color: $primary-p;
+                    .fa{
+                        color: $white;
+                    }
+                    .fab{
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.dont-miss-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4rem;
+    @include m-425{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .miss-box-left{
+        @include m-575{
+            width: 50%;
+        }
+        @include m-425{
+            width: 100%;
+            margin-bottom: 3rem;
+        }
+        .miss-out{
+            font-size: 2rem;
+            color: $heading;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        .para-f{
+            font-size: 1.6rem;
+            color: $text;
+            font-weight: 400;
+        }
+    }
+}
+
+.email-box{
+    display: flex;
+    align-items: center;
+    margin: 3rem 0 4rem;
+    .input-style-ctm{
+        font-size: 14px;
+        
+        height: 4.8rem;
+        border: 1px solid #d8d8d8;
+        border-radius: 4px;
+        color: $text;
+        width: 32rem;
+        font-weight: 400;
+        background: $white;
+        padding: 2px 1rem;
+        @include m-575{
+            font-size: 11px;
+            width: 25rem;
+        }
+        &::placeholder{
+            font-weight: 300;
+            color: $text;
+        }
+        &:focus{
+            outline: none;
+        }
+    }
+   
+    
+}
+.plane-button{
+    width: 14rem;
+    min-width: 14rem;
+    height: 4.8rem;
+    border-radius: 4px;
+    background: $heading;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $heading;
+    margin-left: 1rem;
+    transition: ease-in-out .4s;
+    font-size: 1.6rem;
+    color: $white;
+    font-weight: 400;
+    @include m-575{
+        width: 12rem;
+        min-width: 12rem;
+    }
+    &:hover{
+        background: $primary-p;
+        border: 1px solid $primary-p;
+    }
+}
+
+.card-inline{
+    display: flex;
+    align-items: center;
+    border: 1px solid $heading;
+    padding: 2rem;
+    border-radius: 4px;
+    justify-content: space-between;
+    width: 47.5rem;
+    @include m-575{
+        width: 38rem;
+    }
+    cursor: pointer;
+    svg{
+        width: 24px;
+        min-height: 24px;
+    }
+    .para-card-f{
+        margin: 0 2rem;
+        width: 30rem;
+        .footer-card-para{
+            font-size: 1.6rem;
+            color: $black;
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+    }
+    
+}
+
+.footer-links-main{
+    display: flex;
+    .links-footer{
+        margin: 0 2rem;
+        .links-item{
+            margin-bottom: 1rem;
+            .links-link{
+                font-size: 1.6rem;
+                color: $heading;
+                font-weight: 400;
+                display: inline-block;
+                &:hover{
+                    color: $primary-p;
+                }
+            }
+        }
+    }
+}
+
+.copy-right{
+    display: flex;
+    align-items: center;
+    padding: 3rem 0 3rem;
+    background: $input-bg;
+   p{
+    font-size: 1.6rem;
+    color: $text;
+    font-weight: 400;
+    margin-bottom: 0;
+   }
+}

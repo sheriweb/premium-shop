@@ -1,0 +1,33 @@
+.btn-search {
+    
+    height: 36px;
+    border-radius: 5px;
+    background: $primary-p2;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+    outline: none;
+    border: none;
+    width: 88px;
+    min-width: 88px;
+    color: $white;
+    transition: ease-in-out .4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 3rem;
+    &:hover {
+        background: $primary-p;
+        transition: ease-in-out .4s;
+        color: $white;
+    }
+    &:focus{
+        color: $white;
+        box-shadow: none;
+    }
+    @include m-425{
+        margin-left: 0;
+        margin-top: 1.5rem;
+    }
+}
+
