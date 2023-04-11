@@ -3,13 +3,19 @@
 namespace App\Services\admin;
 
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\Product;
+use App\Models\Size;
+use App\Traits\CommonFunctionTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use DataTables;
 
 class ProductService
 {
+    use CommonFunctionTrait;
+
+    const STORE_ATTRIBUTE_IMAGES = '/admin-images/attribute-images/';
 
     protected $product, $category;
 
@@ -19,30 +25,83 @@ class ProductService
         $this->category = $category;
     }
 
+    /**
+     * @return array
+     */
+    public function createProduct(): array
+    {
+        $result['productAttrArr'][0]['measurement_unit'] = '';
+        $result['productAttrArr'][0]['attr_image'] = '';
+        $result['productAttrArr'][0]['mrp'] = '';
+        $result['productAttrArr'][0]['s_price'] = '';
+        $result['productAttrArr'][0]['qty'] = '';
+        $result['productAttrArr'][0]['size_id'] = '';
+        $result['productAttrArr'][0]['color_id'] = '';
+        $result['product_subCategory'] = [];
+        $result['category_subCategory'] = [];
+        $result['color'] = Color::all();
+        $result['size'] = Size::all();
+
+        return $result;
+    }
+
     public function storeProduct($request)
     {
         try {
             $productData = $request->all();
 
-            foreach ($productData['category_id'] as $val){
-                if($val != null){
-                    $category_id =  $val;
+            foreach ($productData['category_id'] as $val) {
+                if ($val != null) {
+                    $category_id = $val;
                 }
             }
 
-            $productData['category_id'] = $category_id;
-            $storagePath = 'public/productImages';
+            $productData['category_id']  = $category_id;
+            $storagePath                 = 'public/productImages';
             $productData['product_slug'] = Str::slug($productData['product_name']);
-            $product = $this->product->find($productData['product_id']);
+            $product                     = $this->product->find($productData['product_id']);
 
             if ($product) {
                 $product->update($productData);
-                $product_id = $product->id;
+                $product_id      = $product->id;
                 $product_section = $product->product_section;
-                $message = 'Product update successfully.';
+                $message         = 'Product update successfully.';
             } else {
-                $product = $this->product->create($productData);
+                $product    = $this->product->create($productData);
                 $product_id = $product->id;
+                /* start product Attr save */
+                $skuArr        = $request->sku;
+                $priceArr      = $request->price;
+                $qtyArr        = $request->qty;
+                $color_nameArr = $request->color_name;
+                $size_nameArr  = $request->size_name;
+                $image_attrArr = $request->image_attr;
+                $addAttr       = [];
+
+                foreach ($skuArr as $key => $value) {
+                    if ($image_attrArr) {
+                        if ($request->hasFile('image_attr')) {
+                            $imageName = $this->StoreImage($request->file("image_attr.$key"), public_path(self::STORE_ATTRIBUTE_IMAGES));
+                        }
+                    }
+
+                    $productAttrArr = array(
+                        'product_id' => $product_id,
+                        'color_id'   => $color_nameArr[$key],
+                        'size_id'    => $size_nameArr[$key],
+                        'sku'        => $skuArr[$key],
+                        'quantity'   => $qtyArr[$key],
+                        'price'      => $priceArr[$key],
+                        'image'      => (isset($imageName)) ? $imageName : null,
+                        'status'     => 1,
+                    );
+
+                    array_push($addAttr, $productAttrArr);
+
+                }
+
+                DB::table('product_attributes')->insert($addAttr);
+
                 $product_section = $product->product_section;
                 $message = 'Product add successfully.';
             }
@@ -67,14 +126,14 @@ class ProductService
             if ($request->hasFile('feature_image')) {
                 $file = $request->file("feature_image");
                 $file_type = 'featureImage';
-                if($product->files->where('file_type','featureImage')->first()){
-                    $product->files->where('file_type','featureImage')->first()->delete();
+                if ($product->files->where('file_type', 'featureImage')->first()) {
+                    $product->files->where('file_type', 'featureImage')->first()->delete();
                 }
                 $this->uploadImage($file, $storagePath, $product, $file_type);
             }
             if ($request->hasFile('image_thumbnail')) {
-                if($product->files->where('file_type','imageThumbnail')->first()){
-                    $product->files->where('file_type','imageThumbnail')->first()->delete();
+                if ($product->files->where('file_type', 'imageThumbnail')->first()) {
+                    $product->files->where('file_type', 'imageThumbnail')->first()->delete();
                 }
                 $file = $request->file("image_thumbnail");
                 $file_type = 'imageThumbnail';
@@ -102,7 +161,7 @@ class ProductService
     public function productList($request)
     {
         if ($request->ajax()) {
-            $data = $this->product->with('files', 'category')->where('product_section','!=','generalProduct')->get();
+            $data = $this->product->with('files', 'category')->where('product_section', '!=', 'generalProduct')->get();
 
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -111,7 +170,7 @@ class ProductService
                     return $row->category->category_name;
                 })
                 ->addColumn('product', function ($row) {
-                    $path =  $this->getProductImage($row,'featureImage');
+                    $path = $this->getProductImage($row, 'featureImage');
                     $image = '<img src="' . $path . '" style="height: 50px; width: 50px;">';
                     return $image;
                 })
@@ -131,15 +190,15 @@ class ProductService
     {
         $search = $request->search;
         return $this->product->with('files', 'category')
-            ->where('product_section','generalProduct')
-            ->when($search ,function($query) use ($search) {
-                      return    $query->where('product_name', 'like', '%'.$search.'%')
-                                 ->orWhere('brand', 'like', '%'.$search.'%');
-           })
+            ->where('product_section', 'generalProduct')
+            ->when($search, function ($query) use ($search) {
+                return $query->where('product_name', 'like', '%' . $search . '%')
+                    ->orWhere('brand', 'like', '%' . $search . '%');
+            })
             ->paginate(10)
             ->through(function ($product) {
-        return $this->productFormat($product);
-    });;
+                return $this->productFormat($product);
+            });;
 
 //        if ($request->ajax()) {
 //            $data = $this->product->with('files', 'category')->where('product_section','generalProduct')->get();
@@ -171,10 +230,10 @@ class ProductService
     {
         $categories = [];
         $categories_id = [];
-        $ancestorsAndSelf =  $this->category->ancestorsAndSelf($product->category_id);
-        foreach ($ancestorsAndSelf as $key => $cat){
-            $categories_id['sub_category_l'.$key.'_id'] = $cat->id;
-            $categories['category_level_l'.$key+1] = $this->category->where('parent_id', $cat->id)->get();
+        $ancestorsAndSelf = $this->category->ancestorsAndSelf($product->category_id);
+        foreach ($ancestorsAndSelf as $key => $cat) {
+            $categories_id['sub_category_l' . $key . '_id'] = $cat->id;
+            $categories['category_level_l' . $key + 1] = $this->category->where('parent_id', $cat->id)->get();
         }
 
         return [
@@ -182,10 +241,10 @@ class ProductService
             'category_id' => $product->category_id,
             'category_name' => $product->category->category_name,
             'category_image' => $product->category->category_image_url,
-            'parent_category_id' => (isset($categories_id['sub_category_l0_id'])) ? $categories_id['sub_category_l0_id']: null,
-            'sub_category_l1_id' => (isset($categories_id['sub_category_l1_id'])) ? $categories_id['sub_category_l1_id']: null,
+            'parent_category_id' => (isset($categories_id['sub_category_l0_id'])) ? $categories_id['sub_category_l0_id'] : null,
+            'sub_category_l1_id' => (isset($categories_id['sub_category_l1_id'])) ? $categories_id['sub_category_l1_id'] : null,
             'sub_category_l2_id' => (isset($categories_id['sub_category_l2_id'])) ? $categories_id['sub_category_l2_id'] : null,
-            'sub_category_l3_id' => (isset($categories_id['sub_category_l3_id'])) ? $categories_id['sub_category_l3_id']: null,
+            'sub_category_l3_id' => (isset($categories_id['sub_category_l3_id'])) ? $categories_id['sub_category_l3_id'] : null,
             'sku' => $product->sku,
             'product_name' => $product->product_name,
             'product_slug' => $product->product_slug,
@@ -219,12 +278,12 @@ class ProductService
             'read_before_order' => $product->read_before_order,
             'product_section' => $product->product_section,
             'status' => $product->status,
-            'feature_image_url' => $this->getProductImage($product,'featureImage'),
-            'thumbnail_image_url' => $this->getProductImage($product,'imageThumbnail'),
+            'feature_image_url' => $this->getProductImage($product, 'featureImage'),
+            'thumbnail_image_url' => $this->getProductImage($product, 'imageThumbnail'),
             'images' => $this->getProductImages($product->files),
-            'category_level_l1' => (isset($categories['category_level_l1'])) ? $categories['category_level_l1']: null,
-            'category_level_l2' => (isset($categories['category_level_l2'])) ? $categories['category_level_l2']: null,
-            'category_level_l3' => (isset($categories['category_level_l3'])) ? $categories['category_level_l3']: null,
+            'category_level_l1' => (isset($categories['category_level_l1'])) ? $categories['category_level_l1'] : null,
+            'category_level_l2' => (isset($categories['category_level_l2'])) ? $categories['category_level_l2'] : null,
+            'category_level_l3' => (isset($categories['category_level_l3'])) ? $categories['category_level_l3'] : null,
         ];
     }
 
@@ -232,7 +291,7 @@ class ProductService
     {
 
         $images = [];
-        if(json_decode(json_encode($files), TRUE)) {
+        if (json_decode(json_encode($files), TRUE)) {
             foreach ($files as $file) {
                 if ($file->file_type == 'productUpload') {
                     $images[] = ['id' => $file->id, 'name' => $file->name, 'url' => url('storage/' . $file->path)];
@@ -242,11 +301,12 @@ class ProductService
         return $images;
 
     }
-      public function getProductImage($product,$image)
-      {
-          $imageData = $product->files->where('file_type', $image)->first();
-          return ($imageData) ? url('/storage/' . $imageData->path) : asset('assets/images/no-preview.png');
-      }
+
+    public function getProductImage($product, $image)
+    {
+        $imageData = $product->files->where('file_type', $image)->first();
+        return ($imageData) ? url('/storage/' . $imageData->path) : asset('assets/images/no-preview.png');
+    }
 
 
     public function uploadImage($file, $storagePath, $product, $file_type)

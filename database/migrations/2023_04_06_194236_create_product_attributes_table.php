@@ -19,11 +19,8 @@ return new class extends Migration
             $table->unsignedBigInteger('size_id')->nullable();
 
             $table->string('sku');
-            $table->string('color')->nullable();
-            $table->string('size')->nullable();
             $table->double('quantity')->nullable();
             $table->double('price')->nullable();
-            $table->double('sale_price')->nullable();
             $table->string('image')->nullable();
             $table->tinyInteger('status')->nullable();
 

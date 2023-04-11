@@ -6,14 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\File;
 use App\Models\Product;
+use App\Models\Size;
 use App\Models\Store;
 use App\Services\admin\ProductService;
 use http\Env\Response;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -53,13 +56,14 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories=Category::where('parent_id',null)->get();
-        $stores = Store::all();
+        $categories                   = Category::where('parent_id',null)->get();
+        $stores                       = Store::all();
         $product['category_level_l1'] = [];
-        $product['category_level_l2']  = [];
-        $product['category_level_l3']  = [];
+        $product['category_level_l2'] = [];
+        $product['category_level_l3'] = [];
+        $result                       = $this->productService->createProduct();
 
-        return view('admin.product.add-product',compact('categories','product','stores'));
+        return view('admin.product.add-product',compact('categories','product','stores','result'));
     }
 
     public function generalProduct()
@@ -74,10 +78,10 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreProductRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param StoreProductRequest $request
+     * @return JsonResponse
      */
-    public function store(StoreProductRequest $request)
+    public function store(StoreProductRequest $request): JsonResponse
     {
 
        return $this->productService->storeProduct($request);
@@ -113,6 +117,7 @@ class ProductController extends Controller
                 return $this->productService->productFormat($product);
             });
         $product =$product[0];
+
         return view('admin.product.add-product',
             compact('categories','product'));
     }
