@@ -348,7 +348,7 @@
                                     </div>
                                 </div>
 
-                                <div class="card-header header-style-card">
+                                {{--<div class="card-header header-style-card">
                                     <h5>Images</h5><span>(Required / Optional)</span>
                                 </div>
 
@@ -451,7 +451,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>--}}
                             </div>
                         </div>
                     </div>
@@ -530,17 +530,17 @@
                                                 <label class="col-form-label" for="recipient-name">PRICE: <span
                                                         class="text-danger ml-2">*</span></label>
                                                 <input class="form-control form_product" type="text"
-                                                       id="form_s_price" name="price[]"
-                                                       value="{{ @$attr['s_price'] }}">
+                                                       id="form_price" name="price[]"
+                                                       value="{{ @$attr['price'] }}">
                                                 <span class="text-danger" id="error_price_0"></span>
                                             </div>
                                             <div class="col-lg-2 col-md-2 col-sm-3 mb-3">
                                                 <label class="col-form-label" for="recipient-name">QTY: <span
                                                         class="text-danger ml-2">*</span></label>
                                                 <input class="form-control form_product" type="text"
-                                                       id="form_qty"
-                                                       name="qty[]" value="{{ @$attr['qty'] }}">
-                                                <span class="text-danger" id="error_qty_0"></span>
+                                                       id="form_quantity"
+                                                       name="quantity[]" value="{{ @$attr['quantity'] }}">
+                                                <span class="text-danger" id="error_quantity_0"></span>
                                             </div>
 
                                             <div class="col-lg-3 col-md-3 col-sm-3 mb-3">

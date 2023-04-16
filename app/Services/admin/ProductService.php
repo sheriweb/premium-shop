@@ -5,10 +5,12 @@ namespace App\Services\admin;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Product;
+use App\Models\ProductAttribute;
 use App\Models\Size;
 use App\Traits\CommonFunctionTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use DataTables;
 
 class ProductService
@@ -49,7 +51,6 @@ class ProductService
     {
         try {
             $productData = $request->all();
-
             foreach ($productData['category_id'] as $val) {
                 if ($val != null) {
                     $category_id = $val;
@@ -57,7 +58,6 @@ class ProductService
             }
 
             $productData['category_id']  = $category_id;
-            $storagePath                 = 'public/productImages';
             $productData['product_slug'] = Str::slug($productData['product_name']);
             $product                     = $this->product->find($productData['product_id']);
 
@@ -67,12 +67,13 @@ class ProductService
                 $product_section = $product->product_section;
                 $message         = 'Product update successfully.';
             } else {
+
                 $product    = $this->product->create($productData);
-                $product_id = $product->id;
+                $productId = $product->id;
                 /* start product Attr save */
                 $skuArr        = $request->sku;
                 $priceArr      = $request->price;
-                $qtyArr        = $request->qty;
+                $qtyArr        = $request->quantity;
                 $color_nameArr = $request->color_name;
                 $size_nameArr  = $request->size_name;
                 $image_attrArr = $request->image_attr;
@@ -86,7 +87,7 @@ class ProductService
                     }
 
                     $productAttrArr = array(
-                        'product_id' => $product_id,
+                        'product_id' => $productId,
                         'color_id'   => $color_nameArr[$key],
                         'size_id'    => $size_nameArr[$key],
                         'sku'        => $skuArr[$key],
@@ -97,16 +98,15 @@ class ProductService
                     );
 
                     array_push($addAttr, $productAttrArr);
-
                 }
 
-                DB::table('product_attributes')->insert($addAttr);
+                ProductAttribute::insert($addAttr);
 
                 $product_section = $product->product_section;
                 $message = 'Product add successfully.';
             }
 
-            if ($request->hasFile('product_upload')) {
+            /*if ($request->hasFile('product_upload')) {
                 foreach ($request->file('product_upload') as $key => $file) {
                     $file = $request->file("product_upload.$key");
                     $filenameWithExt = $file->getClientOriginalName();
@@ -120,10 +120,9 @@ class ProductService
                         'file_type' => 'productUpload'
                     ]);
                 }
+            }*/
 
-            }
-
-            if ($request->hasFile('feature_image')) {
+            /*if ($request->hasFile('feature_image')) {
                 $file = $request->file("feature_image");
                 $file_type = 'featureImage';
                 if ($product->files->where('file_type', 'featureImage')->first()) {
@@ -138,7 +137,7 @@ class ProductService
                 $file = $request->file("image_thumbnail");
                 $file_type = 'imageThumbnail';
                 $this->uploadImage($file, $storagePath, $product, $file_type);
-            }
+            }*/
             $status = 200;
         } catch (\Exception $e) {
             $message = $e->getMessage();

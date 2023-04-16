@@ -344,8 +344,8 @@ $(document).on('click', '.add_more_attr', function () {
         '</div>';
     html += ' <div class="col-lg-2 col-md-2 col-sm-3 mb-3">\n' +
         '<label class="col-form-label" for="recipient-name">QTY: <span class="text-danger ml-2">*</span></label>\n' +
-        '<input class="form-control form_product" type="text" id="form_qty" name="qty[]" >\n' +
-        '<span class="text-danger" id="error_qty_' + conut + '"></span>\n' +
+        '<input class="form-control form_product" type="text" id="form_quantity" name="quantity[]" >\n' +
+        '<span class="text-danger" id="error_quantity_' + conut + '"></span>\n' +
         '</div>';
 
     var color_name = $('#color_name').html();
