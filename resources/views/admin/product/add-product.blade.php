@@ -169,6 +169,7 @@
             margin-left: 5px !important;
         }
     </style>
+
     <!-- Container-fluid starts-->
     <div class="container-fluid">
         <div class="page-header">
@@ -347,7 +348,7 @@
                                     </div>
                                 </div>
 
-                                <div class="card-header header-style-card">
+                                {{--<div class="card-header header-style-card">
                                     <h5>Images</h5><span>(Required / Optional)</span>
                                 </div>
 
@@ -450,7 +451,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>--}}
                             </div>
                         </div>
                     </div>
@@ -496,18 +497,6 @@
                 </div>
             </div>
 
-
-            <div class="description_div">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Add Description</h5>
-                    </div>
-                    <div class="card-body">
-
-                    </div>
-                </div>
-            </div>
-
             <div class="product-attributes">
                 <div class="card">
                     <div class="card-header">
@@ -517,9 +506,9 @@
                         <div class="product_attr_main">
 
                             <?php
-                                $result = ['productAttrArr'];
                             $loop_count = 1;
                             ?>
+
                             @foreach($result['productAttrArr'] as $index => $val)
                                     <?php
                                     $loop_prev = $loop_count;
@@ -536,44 +525,24 @@
                                                        name="sku[]" value="{{ @$attr['sku'] }}">
                                                 <span class="text-danger" id="error_sku_0"></span>
                                             </div>
-                                            <div class="col-lg-2 col-md-2 col-sm-3 mb-3">
-                                                <label class="col-form-label" for="recipient-name">MRP: <span
-                                                        class="text-danger ml-2">*</span></label>
-                                                <input class="form-control form_product" type="text"
-                                                       id="form_mrp"
-                                                       name="mrp[]" value="{{ @$attr['mrp'] }}">
-                                                <span class="text-danger" id="error_mrp_0"></span>
-                                            </div>
+
                                             <div class="col-lg-2 col-md-2 col-sm-3 mb-3">
                                                 <label class="col-form-label" for="recipient-name">PRICE: <span
                                                         class="text-danger ml-2">*</span></label>
                                                 <input class="form-control form_product" type="text"
-                                                       id="form_s_price" name="price[]"
-                                                       value="{{ @$attr['s_price'] }}">
+                                                       id="form_price" name="price[]"
+                                                       value="{{ @$attr['price'] }}">
                                                 <span class="text-danger" id="error_price_0"></span>
                                             </div>
                                             <div class="col-lg-2 col-md-2 col-sm-3 mb-3">
                                                 <label class="col-form-label" for="recipient-name">QTY: <span
                                                         class="text-danger ml-2">*</span></label>
                                                 <input class="form-control form_product" type="text"
-                                                       id="form_qty"
-                                                       name="qty[]" value="{{ @$attr['qty'] }}">
-                                                <span class="text-danger" id="error_qty_0"></span>
+                                                       id="form_quantity"
+                                                       name="quantity[]" value="{{ @$attr['quantity'] }}">
+                                                <span class="text-danger" id="error_quantity_0"></span>
                                             </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-3 mb-3">
-                                                <label class="col-form-label" for="recipient-name">UNIT: <span
-                                                        class="text-danger ml-2">*</span></label>
-                                                <select class="form-control form-select" name="unit_name[]"
-                                                        id="unit_name">
-                                                    <option value="">--Select--</option>
-                                                    @foreach ($result['measurementUnit'] as $unit)
-                                                        <option value="{{ $unit->id }}"
-                                                                @if($unit->id == $attr['measurement_unit']) selected @endif>{{ $unit->measurement_unit }}</option>
-                                                    @endforeach
 
-                                                </select>
-                                                <span class="text-danger" id="error_unit_name_0"></span>
-                                            </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 mb-3">
                                                 <label class="col-form-label"
                                                        for="recipient-name">COLOR:</label>
@@ -595,7 +564,7 @@
                                                     <option value="">--Select--</option>
                                                     @foreach ($result['size'] as $size)
                                                         <option value="{{ $size->id }}"
-                                                                @if($size->id == $attr['size_id']) selected @endif>{{ $size->size_name }}</option>
+                                                                @if($size->id == $attr['size_id']) selected @endif>{{ $size->size }}</option>
                                                     @endforeach
 
                                                 </select>
@@ -609,6 +578,7 @@
                                                        name="image_attr[]">
                                                 <span class="text-danger" id="error_image_attr_0"></span>
                                             </div>
+
                                             <div class="mb-3 col-lg-2 col-md-2 col-sm-3">
                                                 @if($loop_count == 2)
                                                     <button class="btn btn-secondary active add_more_attr"
@@ -625,8 +595,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
                             @endforeach
                         </div>
@@ -650,7 +618,6 @@
             ImgUpload();
 
             var specification = JSON.parse("{{ json_encode(@$product['specification']) }}");
-            console.log(specification)
 
         });
         const Toast = Swal.mixin({

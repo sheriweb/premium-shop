@@ -29,7 +29,6 @@ class ProductAttribute extends Model
         'size',
         'quantity',
         'price',
-        'sale_price',
         'image',
         'status',
     ];

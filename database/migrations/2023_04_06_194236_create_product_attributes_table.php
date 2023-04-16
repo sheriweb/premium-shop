@@ -14,16 +14,14 @@ return new class extends Migration
         Schema::create('product_attributes', function (Blueprint $table) {
             $table->id();
 
+
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('color_id')->nullable();
             $table->unsignedBigInteger('size_id')->nullable();
 
             $table->string('sku');
-            $table->string('color')->nullable();
-            $table->string('size')->nullable();
             $table->double('quantity')->nullable();
             $table->double('price')->nullable();
-            $table->double('sale_price')->nullable();
             $table->string('image')->nullable();
             $table->tinyInteger('status')->nullable();
 

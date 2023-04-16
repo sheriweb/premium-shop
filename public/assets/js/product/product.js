@@ -323,3 +323,61 @@ function searchProduct(search)
     //
     // });
 
+var loop_count = 1;
+var conut = 0;
+$(document).on('click', '.add_more_attr', function () {
+    loop_count++;
+    conut++;
+    var html = '<div class="product_attr_list" id="product_attr_' + loop_count + '">\n' +
+        '<div class="list">\n' +
+        '<div class="row">';
+    html += '  <div class="col-lg-2 col-md-2 col-sm-3 mb-3">\n' +
+        '<label class="col-form-label" for="recipient-name">SKU: <span class="text-danger ml-2">*</span></label>\n' +
+        '<input class="form-control form_product" type="text" id="form_sku" name="sku[]" >\n' +
+        ' <span class="text-danger" id="error_sku_' + conut + '"></span>\n' +
+        ' </div>';
+
+    html += '<div class="col-lg-2 col-md-2 col-sm-3 mb-3">\n' +
+        ' <label class="col-form-label" for="recipient-name">PRICE: <span class="text-danger ml-2">*</span></label>\n' +
+        '<input class="form-control form_product" type="text" id="form_s_price" name="price[]" >\n' +
+        ' <span class="text-danger" id="error_price_' + conut + '"></span>\n' +
+        '</div>';
+    html += ' <div class="col-lg-2 col-md-2 col-sm-3 mb-3">\n' +
+        '<label class="col-form-label" for="recipient-name">QTY: <span class="text-danger ml-2">*</span></label>\n' +
+        '<input class="form-control form_product" type="text" id="form_quantity" name="quantity[]" >\n' +
+        '<span class="text-danger" id="error_quantity_' + conut + '"></span>\n' +
+        '</div>';
+
+    var color_name = $('#color_name').html();
+    html += '  <div class="col-lg-3 col-md-3 col-sm-3 mb-3">\n' +
+        '<label class="col-form-label" for="recipient-name">COLOR:</label>\n' +
+        ' <select class="form-control form-select" name="color_name[]" id="color_name">  \n' + color_name +
+        ' </select>\n' +
+        '   <span class="text-danger" id="error_color_name_' + conut + '"></span>\n' +
+        '   </div>';
+    var size_name = $('#size_name').html();
+    html += '  <div class="col-lg-3 col-md-3 col-sm-3 mb-3">\n' +
+        '<label class="col-form-label" for="recipient-name">SIZE:</label>\n' +
+        ' <select class="form-control form-select" name="size_name[]" id="size_name">  \n' + size_name +
+        ' </select>\n' +
+        '   <span class="text-danger" id="error_size_name_' + conut + '"></span>\n' +
+        ' </div>';
+    html += ' <div class="mb-3 col-lg-3 col-md-3 col-sm-3">\n' +
+        '  <label class="col-form-label" for="recipient-name">Image:</label>\n' +
+        ' <input class="form-control form_product" type="file" id="form_image_attr" name="image_attr[]">\n' +
+        '  <span class="text-danger" id="error_image_attr_' + conut + '"></span>\n' +
+        '  </div>';
+    html += '<div class="mb-3 col-lg-2 col-md-2 col-sm-3">\n' +
+        '<button class="btn btn-danger active remove_more_attr" id="' + loop_count + '" type="button" ><i class="fa fa-minus"></i> Remove</button>\n' +
+        '  </div>';
+
+    html += '</div></div></div>';
+
+    $('.product_attr_main').append(html);
+});
+
+$(document).on('click', '.remove_more_attr', function () {
+    var ele = $(this).attr('id');
+    $('#product_attr_' + ele).remove();
+});
+
