@@ -169,7 +169,7 @@ class HomeController extends Controller
         return view('new-user-site.brands');
     }
 
-    public function brandProducts($slug)
+    public function brandProducts()
     {
         return view('new-user-site.products');
     }

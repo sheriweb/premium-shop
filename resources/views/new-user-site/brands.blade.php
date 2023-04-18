@@ -96,7 +96,7 @@
         <div class="row ">
             <div class="col-lg-3 mb-2">
                 <div class="brandListGrid__itemTile__productContent" style="position:relative;">
-                    <a href="https://shoppremiumoutlets.com/collections/store-stuart-weitzman?page=1" class="logo-bar__link">
+                    <a href="{{route('home.brand-products')}}" class="logo-bar__link">
 
 
                         <img src="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-card-sdp_360x.png?v=1643239770" style="width: 50%;"
@@ -115,7 +115,7 @@
             </div>
             <div class="col-lg-3 mb-2">
                 <div class="brandListGrid__itemTile__productContent" style="position:relative;">
-                    <a href="#" class="logo-bar__link">
+                    <a href="{{route('home.brand-products')}}" class="logo-bar__link">
                         <img src="https://cdn.shopify.com/s/files/1/0291/4536/6588/files/coach-outlet-brand-card_360x.jpg?v=1668002768" style="width: 50%;"
                              class="brandListGrid__itemTile__productContent__bgImage lazyautosizes lazyloaded" >
                         <div class="brandListGrid__itemTile__productContent__mask"></div>
@@ -127,7 +127,7 @@
             </div>
             <div class="col-lg-3 mb-2">
                 <div class="brandListGrid__itemTile__productContent" style="position:relative;">
-                    <a href="#" class="logo-bar__link">
+                    <a href="{{route('home.brand-products')}}" class="logo-bar__link">
                         <img src="https://cdn.shopify.com/s/files/1/0291/4536/6588/files/fossil-brand-card_360x.png?v=1668787411" style="width: 50%;"
                              class="brandListGrid__itemTile__productContent__bgImage lazyautosizes lazyloaded" >
                         <div class="brandListGrid__itemTile__productContent__mask"></div>
@@ -140,7 +140,7 @@
             </div>
             <div class="col-lg-3 mb-2">
                 <div class="brandListGrid__itemTile__productContent" style="position:relative;">
-                    <a href="#" class="logo-bar__link">
+                    <a href="{{route('home.brand-products')}}" class="logo-bar__link">
                         <img src="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-card-sdp_360x.png?v=1643239770" style="width: 50%;"
                              class="brandListGrid__itemTile__productContent__bgImage lazyautosizes lazyloaded" >
                         <div class="brandListGrid__itemTile__productContent__mask"></div>
@@ -152,38 +152,7 @@
             </div>
             <div class="col-lg-3 mb-2">
                 <div class="brandListGrid__itemTile__productContent" style="position:relative;">
-                    <a href="https://shoppremiumoutlets.com/collections/store-stuart-weitzman?page=1" class="logo-bar__link">
-
-
-                        <img src="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-card-sdp_360x.png?v=1643239770" style="width: 50%;"
-                             class="brandListGrid__itemTile__productContent__bgImage lazyautosizes lazyloaded" >
-
-                        {{--                        <img class="brandListGrid__itemTile__productContent__bgImage lazyautosizes lazyloaded" data-widths="[360]" data-aspectratio="" data-sizes="auto" alt="" data-srcset="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-card-sdp_360x.png?v=1643239770 360w" sizes="249px" srcset="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-card-sdp_360x.png?v=1643239770 360w">--}}
-                        <div class="brandListGrid__itemTile__productContent__mask"></div>
-
-                        {{--                        <img  style="width: 50%;" class="brandListGrid__itemTile__productContent__logoImage lazyautosizes lazyloaded" data-widths="[125]" data-aspectratio="" data-sizes="auto" alt="" data-srcset="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-white-logo_125x.png?v=1643217534 125w" sizes="125px" srcset="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-white-logo_125x.png?v=1643217534 125w">--}}
-                        <img src="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-white-logo_125x.png?v=1643217534" style="width: 50%;" class="brandListGrid__itemTile__productContent__logoImage lazyautosizes lazyloaded" >
-
-                    </a>
-
-                </div>
-
-            </div>
-            <div class="col-lg-3 mb-2">
-                <div class="brandListGrid__itemTile__productContent" style="position:relative;">
-                    <a href="#" class="logo-bar__link">
-                        <img src="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-card-sdp_360x.png?v=1643239770" style="width: 50%;"
-                             class="brandListGrid__itemTile__productContent__bgImage lazyautosizes lazyloaded" >
-                        <div class="brandListGrid__itemTile__productContent__mask"></div>
-                        <img src="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-white-logo_125x.png?v=1643217534" style="width: 50%;" class="brandListGrid__itemTile__productContent__logoImage lazyautosizes lazyloaded" >
-                    </a>
-
-                </div>
-
-            </div>
-            <div class="col-lg-3 mb-2">
-                <div class="brandListGrid__itemTile__productContent" style="position:relative;">
-                    <a href="https://shoppremiumoutlets.com/collections/store-stuart-weitzman?page=1" class="logo-bar__link">
+                    <a href="{{route('home.brand-products')}}" class="logo-bar__link">
 
 
                         <img src="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-card-sdp_360x.png?v=1643239770" style="width: 50%;"
@@ -202,7 +171,38 @@
             </div>
             <div class="col-lg-3 mb-2">
                 <div class="brandListGrid__itemTile__productContent" style="position:relative;">
-                    <a href="#" class="logo-bar__link">
+                    <a href="{{route('home.brand-products')}}" class="logo-bar__link">
+                        <img src="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-card-sdp_360x.png?v=1643239770" style="width: 50%;"
+                             class="brandListGrid__itemTile__productContent__bgImage lazyautosizes lazyloaded" >
+                        <div class="brandListGrid__itemTile__productContent__mask"></div>
+                        <img src="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-white-logo_125x.png?v=1643217534" style="width: 50%;" class="brandListGrid__itemTile__productContent__logoImage lazyautosizes lazyloaded" >
+                    </a>
+
+                </div>
+
+            </div>
+            <div class="col-lg-3 mb-2">
+                <div class="brandListGrid__itemTile__productContent" style="position:relative;">
+                    <a href="{{route('home.brand-products')}}" class="logo-bar__link">
+
+
+                        <img src="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-card-sdp_360x.png?v=1643239770" style="width: 50%;"
+                             class="brandListGrid__itemTile__productContent__bgImage lazyautosizes lazyloaded" >
+
+                        {{--                        <img class="brandListGrid__itemTile__productContent__bgImage lazyautosizes lazyloaded" data-widths="[360]" data-aspectratio="" data-sizes="auto" alt="" data-srcset="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-card-sdp_360x.png?v=1643239770 360w" sizes="249px" srcset="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-card-sdp_360x.png?v=1643239770 360w">--}}
+                        <div class="brandListGrid__itemTile__productContent__mask"></div>
+
+                        {{--                        <img  style="width: 50%;" class="brandListGrid__itemTile__productContent__logoImage lazyautosizes lazyloaded" data-widths="[125]" data-aspectratio="" data-sizes="auto" alt="" data-srcset="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-white-logo_125x.png?v=1643217534 125w" sizes="125px" srcset="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-white-logo_125x.png?v=1643217534 125w">--}}
+                        <img src="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-white-logo_125x.png?v=1643217534" style="width: 50%;" class="brandListGrid__itemTile__productContent__logoImage lazyautosizes lazyloaded" >
+
+                    </a>
+
+                </div>
+
+            </div>
+            <div class="col-lg-3 mb-2">
+                <div class="brandListGrid__itemTile__productContent" style="position:relative;">
+                    <a href="{{route('home.brand-products')}}" class="logo-bar__link">
                         <img src="//cdn.shopify.com/s/files/1/0291/4536/6588/files/stuart-weitzman-card-sdp_360x.png?v=1643239770" style="width: 50%;"
                              class="brandListGrid__itemTile__productContent__bgImage lazyautosizes lazyloaded" >
                         <div class="brandListGrid__itemTile__productContent__mask"></div>
