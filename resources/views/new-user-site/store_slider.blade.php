@@ -34,7 +34,7 @@
 
                                         </div>
                                         <div class="all-store">
-                                            <a href="#" class="store-brand">
+                                            <a href="{{ route('home.brands') }}" class="store-brand">
                                                 View All Stores
                                             </a>
                                         </div>
@@ -74,7 +74,7 @@
 
                                         </div>
                                         <div class="all-store">
-                                            <a href="#" class="store-brand">
+                                            <a href="{{ route('home.brands') }}" class="store-brand">
                                                 View All Stores
                                             </a>
                                         </div>

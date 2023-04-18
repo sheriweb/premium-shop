@@ -45,7 +45,7 @@ class HomeController extends Controller
         $data['featureProductHeader2'] = $this->homeService->getLimitedHomeProducts('featureHeaderSection', 1, 3);
         $data['homeCategories']        = $this->homeService->getHomecategories();
 
-        return view('new-user-site.dashboard', compact('data'));
+        return view('new-user-site.index', compact('data'));
     }
 
 
@@ -162,5 +162,15 @@ class HomeController extends Controller
                     'refurbished_price' => $product->refurbished_price,
                 ];
             });
+    }
+
+    public function brands()
+    {
+        return view('new-user-site.brands');
+    }
+
+    public function brandProducts($slug)
+    {
+        return view('new-user-site.products');
     }
 }
