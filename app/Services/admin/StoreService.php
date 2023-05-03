@@ -2,6 +2,7 @@
 
 namespace App\Services\admin;
 
+use App\Models\Product;
 use App\Models\Store;
 use App\Traits\CommonFunctionTrait;
 use Illuminate\Database\Eloquent\Collection;
@@ -13,7 +14,8 @@ use Illuminate\Database\Eloquent\Collection;
 class StoreService
 {
     use CommonFunctionTrait;
-    const STORE_MAIN_IMAGE      = '/admin-images/store/main-images/';
+
+    const STORE_MAIN_IMAGE = '/admin-images/store/main-images/';
     const STORE_THUMBNAIL_IMAGE = '/admin-images/store/thumbnail-images/';
 
     /**
@@ -30,7 +32,7 @@ class StoreService
      */
     public function storeSave($request): Store
     {
-        $store       = new Store;
+        $store = new Store;
         $store->name = $request->name;
 
         if ($request->file('store_image')) {
@@ -54,7 +56,7 @@ class StoreService
      */
     public function storeUpdate($request): mixed
     {
-        $store       = Store::find($request->store_id);
+        $store = Store::find($request->store_id);
         $store->name = $request->name;
 
         if ($request->file('store_image')) {
@@ -74,5 +76,27 @@ class StoreService
         $store->update();
 
         return $store;
+    }
+
+    public function storeProduct($id)
+    {
+        return Product::where('store_id', '=', $id)->get()
+            ->map(function ($products) {
+            return $this->formatProduct($products);
+        });
+    }
+
+    public function formatProduct($product)
+    {
+        return [
+            'productId'   => $product->id,
+            'productName' => $product->product_name,
+            'productSlug' => $product->product_slug,
+            'description' => $product->description,
+            'image'       => $product->attributes->first()->image ?? '',
+            'price'       => $product->attributes->first()->price ?? '',
+            'sku'         => $product->attributes->first()->sku ?? '',
+            'quantity'    => $product->attributes->first()->sku ?? '',
+        ];
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Store;
 use App\Services\admin\CategoryService;
+use App\Services\admin\StoreService;
 use App\Services\OrderService;
 use App\Services\theme\HomeService;
 use http\Env\Response;
@@ -21,12 +22,20 @@ use App\Services\CartService;
 class HomeController extends Controller
 {
     protected $categoryService, $homeService, $cartService;
+    private StoreService $storeService;
 
-    public function __construct(CategoryService $categoryService, HomeService $homeService, CartService $cartService)
+    public function __construct(
+        CategoryService $categoryService,
+        HomeService $homeService,
+        CartService $cartService,
+        StoreService $storeService
+    )
     {
         $this->categoryService = $categoryService;
         $this->homeService     = $homeService;
         $this->cartService     = $cartService;
+        $this->storeService    = $storeService;
+
     }
 
     /**
@@ -166,11 +175,19 @@ class HomeController extends Controller
 
     public function brands()
     {
-        return view('new-user-site.brands');
+        $stores = Store::all();
+
+        return view('new-user-site.brands',compact('stores'));
     }
 
-    public function brandProducts()
+    /**
+     * @param $id
+     * @return Application|Factory|View|\Illuminate\Foundation\Application
+     */
+    public function brandProducts($id)
     {
-        return view('new-user-site.products');
+        $storeProduct = $this->storeService->storeProduct($id);
+
+        return view('new-user-site.products',compact('storeProduct'));
     }
 }

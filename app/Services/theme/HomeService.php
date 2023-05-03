@@ -4,6 +4,7 @@ namespace App\Services\theme;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Store;
 use App\Services\admin\ProductService;
 use App\Services\ConstantService;
 use App\Services\OrderService;
@@ -714,6 +715,4 @@ class HomeService
             'type' => 'between'
         ];
     }
-
-
 }
