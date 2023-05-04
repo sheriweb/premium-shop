@@ -2,6 +2,7 @@
 
 namespace App\Services\admin;
 
+use App\Helper\HelperFunction;
 use App\Models\Product;
 use App\Models\Store;
 use App\Traits\CommonFunctionTrait;
@@ -78,10 +79,10 @@ class StoreService
         return $store;
     }
 
-    public function storeProduct($id)
+    public function storeProduct($request,$store_id)
     {
-        return Product::where('store_id', '=', $id)->get()
-            ->map(function ($products) {
+        $products =  (new Product)->scopeFiltered(Product::query(),$request->all())->get();
+        return $products->where('store_id',$store_id)->map(function ($products) {
             return $this->formatProduct($products);
         });
     }

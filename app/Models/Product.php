@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helper\HelperFunction;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -78,4 +79,36 @@ class Product extends Model
 //        );
 //    }
 
+    public function scopeFiltered($query, $filters)
+    {
+
+        if (!empty($filters['price'])) {
+            $query->whereHas('attributes', function ($query) use ($filters) {
+                $query->where(function ($query) use ($filters) {
+                    foreach ($filters['price'] as $range) {
+                        $priceRange = HelperFunction::getPriceRange($range);
+                        if ($priceRange['range_type'] == 'between') {
+                            $query->orWhereBetween('price', [$priceRange['min_price'], $priceRange['max_price']]);
+                        } else {
+                            $query->orWhere('price', '>=', $priceRange['max_price']);
+                        }
+                    }
+                });
+            });
+        }
+
+        if (!empty($filters['color'])) {
+            $query->whereHas('attributes', function ($query) use ($filters) {
+                $query->whereIn('color_id', $filters['color']);
+            });
+        }
+
+        if (!empty($filters['size'])) {
+            $query->whereHas('attributes', function ($query) use ($filters) {
+                $query->whereIn('size_id', $filters['size']);
+            });
+        }
+
+        return $query;
+    }
 }
