@@ -9,14 +9,14 @@
 .mobile-brands-card{
     .mobile-card-show{
         .all-brand-card.card-view{
-        
+
             .overlay-brand{
                 background: $input-bg;
-               
+
             }
-            
+
             .all-store{
-               
+
                 position: absolute;
                 left: 50%;
                 top: 50%;
@@ -54,15 +54,15 @@
                 background: $white;
                 border-radius: 5px;
                 font-family: 'Montserrat', sans-serif;
-              
+
             }
             .all-brand-img{
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 background-color: $input-bg;
-               
-               
+
+
             }
             .logo-barnd-img{
                 position: absolute;
@@ -87,9 +87,9 @@
 }
 // All Brands
 .all-brands{
-    padding: 4rem 0 4rem;
+    height: 50%;
     @include medium-768{
-        display: none;     
+        display: none;
   }
 }
 // .all-brand-slider{
@@ -97,8 +97,8 @@
 // }
 .first-row{
     // display: flex !important;
-   
-    
+
+
     &.second-row{
         margin: 0 10rem;
         @include medium-768{
@@ -106,14 +106,14 @@
         }
     }
     .all-brand-card.card-view{
-        
+
         .overlay-brand{
             background: $input-bg;
-           
+
         }
-        
+
         .all-store{
-           
+
             position: absolute;
             left: 50%;
             top: 50%;
@@ -163,7 +163,7 @@
             @include medium-768{
                 min-width: 230px;
             }
-           
+
         }
         .logo-barnd-img{
             position: absolute;
@@ -210,7 +210,7 @@
     .carousel-indicators li.active{
         opacity: 1;
         background: $heading;
-        
+
     }
     .flex-carosel{
         display: flex;
@@ -260,7 +260,7 @@
             .hero-text{
                 font-family: 'Montserrat', sans-serif;
                 font-weight: 400;
-                
+
                 font-size: 1.8rem;
                 color: $heading;
                 margin-bottom: 2rem;
@@ -289,7 +289,7 @@
                 height: auto;
             }
             @include medium-768{
-                
+
                 width: 100%;
                 min-width: 100%;
                 margin-top: 5rem;
@@ -313,7 +313,7 @@
     opacity: 1;
     &:hover{
         background: $primary-p;
-        
+
         svg{
             path{
                 fill: $white;
@@ -336,7 +336,7 @@
     opacity: 1;
     &:hover{
         background: $primary-p;
-        
+
         svg{
             path{
                 fill: $white;
@@ -359,7 +359,7 @@
             width: 1rem;
         }
     }
-   
+
 
 }
 .carousel-control-prev{
@@ -373,7 +373,7 @@
         @include m-575{
             width: 1rem;
         }
-      
+
     }
 }
 
@@ -383,7 +383,7 @@
 
 .brands{
     padding: 5rem 0;
-   
+
 }
 
 .brands-img{
@@ -503,7 +503,7 @@
             color: $heading;
             margin-bottom: .5rem;
             font-family: 'Crimson Pro', serif;
-            
+
         }
         .infofrag{
             font-size: 1.6rem;
@@ -552,7 +552,7 @@
 }
 
 .feature-card{
-    
+
     margin: 0 .75rem;
     border-radius: 5px;
     position: relative;
@@ -572,7 +572,7 @@
         @include medium-768{
             height: auto;
         }
-       
+
     }
     .overlay-img{
         position: absolute;
@@ -629,7 +629,7 @@
         border-radius: 3px;
         background: url(../images/boss.png) no-repeat center ;
         background-size: cover;
-        
+
         .overlay-img{
             position: absolute;
             left: 0;
@@ -675,12 +675,12 @@
     justify-content: center;
     height: 40rem;
     text-align: center;
-   
+
 }
 .feature-card.card-view{
    .overlay-img{
     background: $input-bg;
-    
+
    }
 }
 .bg-place-holder-feature{
@@ -712,7 +712,7 @@
         font-weight: 600;
         margin-bottom: 1rem;
         font-family: 'Montserrat', sans-serif;
-       
+
     }
     .collection-text-box{
         overflow-y: auto;
@@ -723,20 +723,20 @@
         &::-webkit-scrollbar {
             width: 5px;
         }
-        
+
         /* Track */
         &::-webkit-scrollbar-track {
-            background: #f1f1f1; 
+            background: #f1f1f1;
         }
-        
+
         /* Handle */
         &::-webkit-scrollbar-thumb {
-            background: $primary-p; 
+            background: $primary-p;
         }
-        
+
         /* Handle on hover */
         &::-webkit-scrollbar-thumb:hover {
-            background: $secondary; 
+            background: $secondary;
         }
         .para-collection{
             font-size: 1.6rem;
@@ -832,7 +832,7 @@
     color: $heading;
     margin-bottom: 2rem;
     font-family: 'Montserrat', sans-serif;
-   
+
 }
 
 // spo-main
@@ -883,7 +883,7 @@
     @include m-425{
         margin: 0 0 3rem;
     }
-    
+
     span{
         margin-right: 2rem;
 

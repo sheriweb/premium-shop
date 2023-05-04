@@ -102,7 +102,7 @@
     <section>
         <div class="container-fluid">
             <div class="row">
-              <div class="col-lg-3">
+              <div class="col-lg-2">
 
               </div>
                 <div class="col-lg-9">
@@ -125,7 +125,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" class="grid-product__link " >
+                            <a href="{{route('home.brand-products-description')}}" class="grid-product__link " >
                                 <div class="grid-product__image-mask keelo">
                                     <div class="p-image-wrap">
                                         <div class="grid-product__image loaded"   style="background-repeat: repeat-y; background-image: url('https://cdn.shopify.com/s/files/1/0291/4536/6588/products/8d288205650840239e6a0eafefdf1181_360x.jpg?v=1679422698')" ></div>
@@ -169,7 +169,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" class="grid-product__link " >
+                            <a href="{{route('home.brand-products-description')}}" class="grid-product__link " >
                                 <div class="grid-product__image-mask keelo">
                                     <div class="p-image-wrap">
                                         <div class="grid-product__image loaded"   style="background-repeat: repeat-y; background-image: url('https://cdn.shopify.com/s/files/1/0291/4536/6588/products/8d288205650840239e6a0eafefdf1181_360x.jpg?v=1679422698')" ></div>
@@ -210,7 +210,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" class="grid-product__link " >
+                            <a href="{{route('home.brand-products-description')}}" class="grid-product__link " >
                                 <div class="grid-product__image-mask keelo">
                                     <div class="p-image-wrap">
                                         <div class="grid-product__image loaded"   style="background-repeat: repeat-y; background-image: url('https://cdn.shopify.com/s/files/1/0291/4536/6588/products/8d288205650840239e6a0eafefdf1181_360x.jpg?v=1679422698')" ></div>
@@ -251,7 +251,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" class="grid-product__link " >
+                            <a href="{{route('home.brand-products-description')}}" class="grid-product__link " >
                                 <div class="grid-product__image-mask keelo">
                                     <div class="p-image-wrap">
                                         <div class="grid-product__image loaded"   style="background-repeat: repeat-y; background-image: url('https://cdn.shopify.com/s/files/1/0291/4536/6588/products/8d288205650840239e6a0eafefdf1181_360x.jpg?v=1679422698')" ></div>
@@ -292,7 +292,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" class="grid-product__link " >
+                            <a href="{{route('home.brand-products-description')}}" class="grid-product__link " >
                                 <div class="grid-product__image-mask keelo">
                                     <div class="p-image-wrap">
                                         <div class="grid-product__image loaded"   style="background-repeat: repeat-y; background-image: url('https://cdn.shopify.com/s/files/1/0291/4536/6588/products/8d288205650840239e6a0eafefdf1181_360x.jpg?v=1679422698')" ></div>
@@ -333,7 +333,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" class="grid-product__link " >
+                            <a href="{{route('home.brand-products-description')}}" class="grid-product__link " >
                                 <div class="grid-product__image-mask keelo">
                                     <div class="p-image-wrap">
                                         <div class="grid-product__image loaded"   style="background-repeat: repeat-y; background-image: url('https://cdn.shopify.com/s/files/1/0291/4536/6588/products/8d288205650840239e6a0eafefdf1181_360x.jpg?v=1679422698')" ></div>

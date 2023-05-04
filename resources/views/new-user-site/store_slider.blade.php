@@ -102,6 +102,88 @@
                             </div>
                         </div>
                     </div>
+                    <div class="first-row">
+                        <!-- ye slide move hogei -->
+                        <div class="items-slider-slider">
+                            <div class="block-row-1st">
+                                <ul class="top-parent-ul-items">
+                                    @foreach($data['stores'] as $store)
+                                        <li class="all-brand-card">
+                                            <div class="all-brand-img">
+                                                <img class="img-fluid"
+                                                     src="{{asset('admin-images/store/main-images/'.$store->store_image)}}" alt="img">
+                                            </div>
+                                            <div class="overlay-brand">
+
+                                            </div>
+                                            <div class="just-label">
+                                                Just In
+                                            </div>
+                                            <div class="logo-barnd-img">
+                                                <img class="img-fluid"
+                                                     src="{{asset('admin-images/store/thumbnail-images/'.$store->store_thumbnail)}}" alt="img">
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                    <li class="all-brand-card card-view">
+                                        <div class="all-brand-img">
+                                            <img class="img-fluid"
+                                                 src="{{asset('new-user-side/images/brand-1.jpg')}}" alt="img">
+                                        </div>
+                                        <div class="overlay-brand">
+
+                                        </div>
+                                        <div class="all-store">
+                                            <a href="{{ route('home.brands') }}" class="store-brand">
+                                                View All Stores
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="items-slider-slider">
+                            <div class="block-row-1st">
+                                <ul class="top-parent-ul-items">
+
+                                    @foreach($data['stores'] as $store)
+                                        <li class="all-brand-card">
+                                            <div class="all-brand-img">
+                                                <img class="img-fluid"
+                                                     src="{{asset('admin-images/store/main-images/'.$store->store_image)}}" alt="img">
+                                            </div>
+                                            <div class="overlay-brand">
+
+                                            </div>
+                                            <div class="just-label">
+                                                Just In
+                                            </div>
+                                            <div class="logo-barnd-img">
+                                                <img class="img-fluid"
+                                                     src="{{asset('admin-images/store/thumbnail-images/'.$store->store_thumbnail)}}" alt="img">
+                                            </div>
+                                        </li>
+                                    @endforeach
+
+                                    <li class="all-brand-card card-view">
+                                        <div class="all-brand-img">
+                                            <img class="img-fluid"
+                                                 src="{{asset('new-user-side/images/brand-1.jpg')}}" alt="img">
+                                        </div>
+                                        <div class="overlay-brand">
+
+                                        </div>
+                                        <div class="all-store">
+                                            <a href="{{ route('home.brands') }}" class="store-brand">
+                                                View All Stores
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

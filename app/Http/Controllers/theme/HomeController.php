@@ -173,4 +173,9 @@ class HomeController extends Controller
     {
         return view('new-user-site.products');
     }
+
+    public function brandProductsDescription()
+    {
+        return view('new-user-site.product_description');
+    }
 }
