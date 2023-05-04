@@ -112,12 +112,58 @@
             font-size: 13px;
             margin-top: 5px;
         }
+        .filters-sidebar {
+            border: none;
+            margin-bottom: 20px;
+            /*margin-right: 20px;*/
+            vertical-align: top;
+            width: 300px;
+            box-sizing: border-box;
+            font-weight: normal;
+            line-height: 1.45em;
+            /*overflow-y: scroll!important;*/
+            height: 100%!important;
+        }
+        .collapsibles-wrapper--border-bottom {
+            border-bottom: 1px solid #e8e9eb;
+        }
+        .collapsible-trigger-btn{
+            text-align: left;
+            letter-spacing: 0.1em;
+            font-size: 15px;
+            display: block;
+            width: 100%;
+            padding: 17.14286px 0;
+            border: none !important;
+            background-color: transparent !important;
+        }
+        .collapsible-trigger {
+            color: inherit;
+            position: relative;
+        }
+        .accordions{
+            margin-top: 20px !important;
+        }
+        .content-div .list-group-item {
+            border: none;
+            color: black;
+            font-size: 13px;
+
+        }
+        .content-div .list-group-item input{
+            position: relative !important;
+        }
+        .price-content.content-div {
+            padding: 10px 0px;
+        }
     </style>
     <section>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3">
-
+                    <form id="filter_form" method="get" action="{{ route('home.brand-products', request()->route('id')) }}">
+                   @include('new-user-site.partials.filters-sidebar')
+                    </form>
                 </div>
                 <div class="col-lg-9">
                     <div class="row">
@@ -191,4 +237,15 @@
         </div>
     </section>
 
+@endsection
+@section('scripts')
+    <script>
+        function submitFilter()
+        {
+            var form = document.getElementById("filter_form");
+                form.submit();
+        }
+
+
+    </script>
 @endsection

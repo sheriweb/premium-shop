@@ -4,9 +4,12 @@ namespace App\Http\Controllers\theme;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\Product;
+use App\Models\Size;
 use App\Models\Store;
 use App\Services\admin\CategoryService;
+use App\Services\admin\ColorService;
 use App\Services\admin\StoreService;
 use App\Services\OrderService;
 use App\Services\theme\HomeService;
@@ -184,10 +187,14 @@ class HomeController extends Controller
      * @param $id
      * @return Application|Factory|View|\Illuminate\Foundation\Application
      */
-    public function brandProducts($id)
+    public function brandProducts(Request $request,$id)
     {
-        $storeProduct = $this->storeService->storeProduct($id);
 
-        return view('new-user-site.products',compact('storeProduct'));
+        $storeProduct = $this->storeService->storeProduct($request,$id);
+        $filters = $request->all();
+        $colors = Color::all();
+        $sizes = Size::all();
+
+        return view('new-user-site.products',compact('storeProduct','filters','colors','sizes'));
     }
 }
