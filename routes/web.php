@@ -31,6 +31,7 @@ Route::get('/', [\App\Http\Controllers\theme\HomeController::class, 'index']);
 Route::get('/brands', [\App\Http\Controllers\theme\HomeController::class, 'brands'])->name('home.brands');
 Route::get('/brands/product/{id?}', [\App\Http\Controllers\theme\HomeController::class, 'brandProducts'])->name('home.brand-products');
 Route::get('/product/{slug}', [\App\Http\Controllers\theme\HomeController::class, 'getProductBySlug'])->name('home.product');
+Route::get('/category/product/{id?}', [\App\Http\Controllers\theme\HomeController::class, 'categoryProducts'])->name('home.category-products');
 
 
 Route::middleware(['middleware' => 'auth'])->group(function () {

@@ -161,7 +161,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3">
-                    <form id="filter_form" method="get" action="{{ route('home.brand-products', request()->route('id')) }}">
+                    <form id="filter_form" method="get" action="{{ route(Route::currentRouteName(), request()->route('id')) }}">
                    @include('new-user-site.partials.filters-sidebar')
                     </form>
                 </div>

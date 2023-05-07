@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Kalnoy\Nestedset\NodeTrait;
@@ -32,4 +33,19 @@ class Category extends Model
         return $this->hasMany(Product::class,'category_id');
     }
 
+    /**
+     * @return Collection
+     */
+    public static function categories(): Collection
+    {
+        return Category::all();
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function categoryTree(): mixed
+    {
+       return Category::get()->toTree();
+    }
 }
