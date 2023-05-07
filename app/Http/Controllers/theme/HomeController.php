@@ -225,4 +225,11 @@ class HomeController extends Controller
         return view('new-user-site.products',
             compact('storeProduct', 'filters', 'colors', 'sizes'));
     }
+
+    public function getProductBySlug($slug)
+    {
+//        $product= $this->homeService->getProductBySlug($slug);
+        return view('new-user-site.product-page');
+
+    }
 }

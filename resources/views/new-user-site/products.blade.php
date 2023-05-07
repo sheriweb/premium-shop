@@ -192,7 +192,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#" class="grid-product__link ">
+                                <a href={{ route('home.product',$product['productSlug']) }} class="grid-product__link ">
                                     <div class="grid-product__image-mask keelo">
                                         <div class="p-image-wrap">
                                             <div class="grid-product__image loaded"
