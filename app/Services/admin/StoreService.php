@@ -87,6 +87,19 @@ class StoreService
         });
     }
 
+    /**
+     * @param $request
+     * @param $categoryId
+     * @return mixed
+     */
+    public function categoryProduct($request,$categoryId)
+    {
+        $products =  (new Product)->scopeFiltered(Product::query(),$request->all())->get();
+        return $products->where('category_id',$categoryId)->map(function ($products) {
+            return $this->formatProduct($products);
+        });
+    }
+
     public function formatProduct($product)
     {
         return [

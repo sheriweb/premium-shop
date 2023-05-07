@@ -7,10 +7,10 @@
                 </h3>
                 <div class="category-flex">
                     @foreach($data['categories'] as $category)
-                        <a href="{{route('home.brand-products')}}">
+                        <a href="{{route('home.category-products',['id'=> $category['id']])}}">
                             <div class="category-card">
                                 <div class="category-img">
-                                    <img src=" {{ URL::asset("storage/category/".$category['category_image']) }}"
+                                    <img src="{{ URL::asset("storage/category/".$category['category_image']) }}"
                                          class="img-fluid"
                                          alt="img">
                                 </div>
