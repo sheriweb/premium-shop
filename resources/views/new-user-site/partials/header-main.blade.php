@@ -24,7 +24,7 @@
                             <!-- <img id="img-show" class="img-men-none" src="images/Icon feather-menu-1.svg" alt="img"> -->
                         </button>
                         <div class="img-logo">
-                            <a class="d-inline-block" href="javascript:void(0)">
+                            <a class="d-inline-block" href="{{url('/')}}">
                                 <svg viewBox="0 0 488.24 17.48" style="width:380px;height:14px">
                                     <style type="text/css">
                                         .st0 {
