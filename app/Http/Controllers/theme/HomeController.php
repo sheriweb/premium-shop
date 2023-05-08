@@ -226,10 +226,14 @@ class HomeController extends Controller
             compact('storeProduct', 'filters', 'colors', 'sizes'));
     }
 
-    public function getProductBySlug($slug)
+    /**
+     * @param $slug
+     * @return Application|Factory|View|\Illuminate\Foundation\Application
+     */
+    public function getProductBySlug($slug): \Illuminate\Foundation\Application|View|Factory|Application
     {
-//        $product= $this->homeService->getProductBySlug($slug);
-        return view('new-user-site.product-page');
+        $product = $this->homeService->getProductBySlug($slug);
 
+        return view('new-user-site.product-page',compact('product'));
     }
 }

@@ -42,18 +42,18 @@ class ProductAttribute extends Model
     }
 
     /**
-     * @return HasOne
+     * @return BelongsTo
      */
-    public function color(): HasOne
+    public function color(): BelongsTo
     {
-        return $this->hasOne(Color::class);
+        return $this->belongsTo(Color::class);
     }
 
     /**
-     * @return HasOne
+     * @return BelongsTo
      */
-    public function size(): HasOne
+    public function size(): BelongsTo
     {
-        return $this->hasOne(Size::class);
+        return $this->belongsTo(Size::class);
     }
 }

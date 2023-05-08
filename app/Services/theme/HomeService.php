@@ -645,9 +645,13 @@ class HomeService
         return view('theme.home.currentCategory.current', compact('products'));
     }
 
-    public function getProductBySlug($slug)
+    /**
+     * @param $slug
+     * @return mixed
+     */
+    public function getProductBySlug($slug): mixed
     {
-        return $this->getProduct(null, $slug);
+        return Product::Where('product_slug',$slug)->with('attributes.color', 'attributes.size')->first();
     }
 
     public function getCategoryProducts($request, $slug)

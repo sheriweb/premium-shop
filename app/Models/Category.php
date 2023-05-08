@@ -38,7 +38,7 @@ class Category extends Model
      */
     public static function categories(): Collection
     {
-        return Category::all();
+        return Category::where('parent_id',null)->get();
     }
 
     /**
