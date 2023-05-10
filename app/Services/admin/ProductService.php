@@ -57,27 +57,27 @@ class ProductService
                 }
             }
 
-            $productData['category_id']  = $category_id;
+            $productData['category_id'] = $category_id;
             $productData['product_slug'] = Str::slug($productData['product_name']);
-            $product                     = $this->product->find($productData['product_id']);
+            $product = $this->product->find($productData['product_id']);
 
             if ($product) {
                 $product->update($productData);
-                $product_id      = $product->id;
+                $product_id = $product->id;
                 $product_section = $product->product_section;
-                $message         = 'Product update successfully.';
+                $message = 'Product update successfully.';
             } else {
 
-                $product    = $this->product->create($productData);
+                $product = $this->product->create($productData);
                 $productId = $product->id;
                 /* start product Attr save */
-                $skuArr        = $request->sku;
-                $priceArr      = $request->price;
-                $qtyArr        = $request->quantity;
+                $skuArr = $request->sku;
+                $priceArr = $request->price;
+                $qtyArr = $request->quantity;
                 $color_nameArr = $request->color_name;
-                $size_nameArr  = $request->size_name;
+                $size_nameArr = $request->size_name;
                 $image_attrArr = $request->image_attr;
-                $addAttr       = [];
+                $addAttr = [];
 
                 foreach ($skuArr as $key => $value) {
                     if ($image_attrArr) {
@@ -88,13 +88,13 @@ class ProductService
 
                     $productAttrArr = array(
                         'product_id' => $productId,
-                        'color_id'   => $color_nameArr[$key],
-                        'size_id'    => $size_nameArr[$key],
-                        'sku'        => $skuArr[$key],
-                        'quantity'   => $qtyArr[$key],
-                        'price'      => $priceArr[$key],
-                        'image'      => (isset($imageName)) ? $imageName : null,
-                        'status'     => 1,
+                        'color_id' => $color_nameArr[$key],
+                        'size_id' => $size_nameArr[$key],
+                        'sku' => $skuArr[$key],
+                        'quantity' => $qtyArr[$key],
+                        'price' => $priceArr[$key],
+                        'image' => (isset($imageName)) ? $imageName : null,
+                        'status' => 1,
                     );
 
                     array_push($addAttr, $productAttrArr);
@@ -160,7 +160,7 @@ class ProductService
     public function productList($request)
     {
         if ($request->ajax()) {
-            $data = $this->product->with('files', 'category')->where('product_section', '!=', 'generalProduct')->get();
+            $data = $this->product->with('category', 'attributes')->where('product_section', '!=', 'generalProduct')->get();
 
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -168,9 +168,15 @@ class ProductService
 
                     return $row->category->category_name;
                 })
+                ->addColumn('quantity', function ($row) {
+
+                    return $row->attributes->first()->quantity;
+                })
                 ->addColumn('product', function ($row) {
-                    $path = $this->getProductImage($row, 'featureImage');
+                    $imageData = $row->attributes->first()->image;
+                    $path = $imageData ? asset('admin-images/attribute-images/' . $imageData) : asset('assets/images/no-preview.png');
                     $image = '<img src="' . $path . '" style="height: 50px; width: 50px;">';
+
                     return $image;
                 })
                 ->addColumn('action', function ($row) {
@@ -178,6 +184,7 @@ class ProductService
                             <a href="/edit-product/' . $row->id . '"><span class="edit-category" product-id="' . $row->id . '" ><i class="icofont-ui-edit text-primary"></i></span></a>
                             <span><i class="icofont-ui-delete text-success "></i></span>
                     ';
+
                     return $actionBtn;
                 })
                 ->rawColumns(['action', 'category', 'product'])

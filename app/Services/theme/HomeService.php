@@ -50,8 +50,7 @@ class HomeService
     public function getHomeProducts($section, $status)
     {
 
-        return $this->product->with('files')
-            ->where('product_section', $section)
+        return $this->product->where('product_section', $section)
             ->where('status', $status)
             ->orderBy('id', 'desc')->get()
             ->map(function ($products) {
@@ -72,74 +71,17 @@ class HomeService
             });
     }
 
-    public function productFormat($res)
+    public function productFormat($product)
     {
-
-        $categories = [];
-        $categories_id = [];
-        $productType = null;
-        $ancestorsAndSelf = $this->category->ancestorsAndSelf($res->category_id);
-        foreach ($ancestorsAndSelf as $key => $cat) {
-            $categories_id['sub_category_l' . $key . '_id'] = $cat->id;
-            $categories['category_level_l' . $key + 1] = $this->category->where('parent_id', $cat->id)->get();
-        }
-
-        if (($res->quantity > 0 && $res->price > 0) && ($res->refurbished_quantity > 0 && $res->sale_refurbished_price > 0)) {
-            $productType = 'bothType';
-        } elseif ($res->quantity > 0 && $res->price) {
-            $productType = 'new';
-        } elseif ($res->refurbished_quantity > 0 && $res->sale_refurbished_price > 0) {
-            $productType = 'refurbished';
-        } else {
-            $productType = 'unknown';
-        }
-
         return [
-            'id' => $res->id,
-            'category_id' => $res->category_id,
-            'parent_category_id' => (isset($categories_id['sub_category_l0_id'])) ? $categories_id['sub_category_l0_id'] : null,
-            'sub_category_l1_id' => (isset($categories_id['sub_category_l1_id'])) ? $categories_id['sub_category_l1_id'] : null,
-            'sub_category_l2_id' => (isset($categories_id['sub_category_l2_id'])) ? $categories_id['sub_category_l2_id'] : null,
-            'sub_category_l3_id' => (isset($categories_id['sub_category_l3_id'])) ? $categories_id['sub_category_l3_id'] : null,
-            'sku' => $res->sku,
-            'slug' => $res->product_slug,
-            'files' => $res->files,
-            'feature_image' => $this->getImage($res, 'featureImage'),
-            'thumbnail_image' => $this->getImage($res, 'imageThumbnail'),
-            'images' => $this->productService->getProductImages($res->files),
-            'product_name' => $res->product_name,
-            'product_slug' => $res->product_slug,
-            'brand' => $res->brand,
-            'weight' => $res->weight,
-            'dimensions' => $res->dimensions,
-            'capacity' => $res->capacity,
-            'capacity_watts' => $res->capacity_watts,
-            'technology' => $res->technology,
-            'processing_speed' => $res->processing_speed,
-            'no_of_ports' => $res->no_of_ports,
-            'memory' => $res->memory,
-            'storage' => $res->storage,
-            'screen_size' => $res->screen_size,
-            'form_factor' => $res->form_factor,
-            'generation' => $res->generation,
-            'product_type' => $res->product_type,
-            'cache_type' => $res->cache_type,
-            'screen_resolution' => $res->screen_resolution,
-            'description' => $res->description,
-            'specification' => $res->specification,
-            'read_before_order' => $res->read_before_order,
-            'product_section' => $res->product_section,
-            'is_featured' => $res->is_featured,
-            'price' => $res->price,
-            'quantity' => $res->quantity,
-            'refurbished_quantity' => $res->refurbished_quantity,
-            'retail_price' => $res->retail_price,
-            'refurbished_price' => $res->refurbished_price,
-            'productType' => $productType,
-            'sale_refurbished_price' => $res->sale_refurbished_price,
-            'status' => $res->status,
-            'created_at' => $res->created_at->diffForHumans(),
-            'updated_at' => $res->created_at->diffForHumans(),
+            'productId'   => $product->id,
+            'productName' => $product->product_name,
+            'productSlug' => $product->product_slug,
+            'description' => $product->description,
+            'image'       => $product->attributes->first()->image ?? '',
+            'price'       => $product->attributes->first()->price ?? '',
+            'sku'         => $product->attributes->first()->sku ?? '',
+            'quantity'    => $product->attributes->first()->quantity ?? '',
         ];
     }
 

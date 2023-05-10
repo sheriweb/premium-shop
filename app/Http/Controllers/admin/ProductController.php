@@ -110,7 +110,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $categories=Category::where('parent_id',null)->get();
+        $categories = Category::where('parent_id',null)->get();
+        $stores = Store::all();
         $product = Product::with('category','files')->where('id',$id)
             ->get()
             ->map(function ($product){
@@ -119,7 +120,7 @@ class ProductController extends Controller
         $product =$product[0];
 
         return view('admin.product.add-product',
-            compact('categories','product'));
+            compact('categories','product','stores'));
     }
     public function editGeneralProduct($id)
     {

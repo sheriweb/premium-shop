@@ -52,10 +52,10 @@ class HomeController extends Controller
         $data['categories'] = $this->categoryService->getCategories(1);
         $data['categoryTree'] = Category::get()->toTree();
         $data['featureProduct'] = $this->homeService->getHomeProducts('featureProductSection', 1);
-        $data['newProduct'] = $this->homeService->getHomeProducts('newProductSection', 1);
+        /*$data['newProduct'] = $this->homeService->getHomeProducts('newProductSection', 1);
         $data['dealOfTheDay'] = $this->homeService->getHomeProducts('dealOfTheDaySection', 1);
         $data['featureProductHeader1'] = $this->homeService->getLimitedHomeProducts('featureHeaderSection', 1, 2);
-        $data['featureProductHeader2'] = $this->homeService->getLimitedHomeProducts('featureHeaderSection', 1, 3);
+        $data['featureProductHeader2'] = $this->homeService->getLimitedHomeProducts('featureHeaderSection', 1, 3);*/
         $data['homeCategories'] = $this->homeService->getHomecategories();
 
         return view('new-user-site.index', compact('data'));

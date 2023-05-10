@@ -110,7 +110,7 @@ class StoreService
             'image'       => $product->attributes->first()->image ?? '',
             'price'       => $product->attributes->first()->price ?? '',
             'sku'         => $product->attributes->first()->sku ?? '',
-            'quantity'    => $product->attributes->first()->sku ?? '',
+            'quantity'    => $product->attributes->first()->quantity ?? '',
         ];
     }
 }

@@ -29,16 +29,17 @@
                     </button>
                     <div class="feautre-slider-f1">
                         @foreach($data['featureProduct'] as $featureProduct)
+                            <a href="{{ route('home.product',$featureProduct['productSlug']) }}">
                             <div class="feature-card">
                                 <div class="feature-img">
-                                    <img src="{{$featureProduct['feature_image']}}" class="img-fluid"
+                                    <img src="{{asset('admin-images/attribute-images/'.$featureProduct['image'])}}" class="img-fluid"
                                          alt="img">
                                 </div>
                                 <div class="overlay-img"></div>
-                                <div class="img-logo-feature">
+                                {{--<div class="img-logo-feature">
                                     <img class="img-fluid" src="{{$featureProduct['thumbnail_image']}}"
                                          alt="img">
-                                </div>
+                                </div>--}}
                                 <div class="text-feature-box">
                                     <h3 class="extra-feature-heading">
                                         Extra 20% Off
